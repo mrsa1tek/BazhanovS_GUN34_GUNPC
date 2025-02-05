@@ -512,7 +512,7 @@ MonoBehaviour:
   - {fileID: 70274279936556424}
   - {fileID: 7220053928643472986}
   - {fileID: 278441370589989502}
-  _skidAudioSource: {fileID: 4532344173885199592}
+  _skidAudioSource: {fileID: 7561875659294221668}
   _transmission: {fileID: 11400000, guid: ba262199121b161449e46b87646a726d, type: 2}
   _maxSteerAngle: 25
   _maxHandbrakeTorque: 1000
@@ -643,7 +643,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bd9566abdbf08834281bfb4ea8b92a5d, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
