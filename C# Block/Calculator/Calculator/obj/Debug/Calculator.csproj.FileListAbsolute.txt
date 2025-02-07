@@ -5,3 +5,10 @@ C:\Users\bazha\source\repos\Calculator\Calculator\bin\Debug\Calculator.exe
 C:\Users\bazha\source\repos\Calculator\Calculator\bin\Debug\Calculator.pdb
 C:\Users\bazha\source\repos\Calculator\Calculator\obj\Debug\Calculator.exe
 C:\Users\bazha\source\repos\Calculator\Calculator\obj\Debug\Calculator.pdb
+F:\Prototype-Tanks\C# Block\Calculator\Calculator\bin\Debug\Calculator.exe.config
+F:\Prototype-Tanks\C# Block\Calculator\Calculator\bin\Debug\Calculator.exe
+F:\Prototype-Tanks\C# Block\Calculator\Calculator\bin\Debug\Calculator.pdb
+F:\Prototype-Tanks\C# Block\Calculator\Calculator\obj\Debug\Calculator.csproj.AssemblyReference.cache
+F:\Prototype-Tanks\C# Block\Calculator\Calculator\obj\Debug\Calculator.csproj.CoreCompileInputs.cache
+F:\Prototype-Tanks\C# Block\Calculator\Calculator\obj\Debug\Calculator.exe
+F:\Prototype-Tanks\C# Block\Calculator\Calculator\obj\Debug\Calculator.pdb
