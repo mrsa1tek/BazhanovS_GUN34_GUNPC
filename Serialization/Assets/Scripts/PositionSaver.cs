@@ -67,7 +67,7 @@ namespace DefaultNamespace
 			//todo comment: Подумайте для чего нужна эта строка? (а потом проверьте догадку, закомментировав)
 			//Она освобождает ресурсы, связанные с файловым потоком)
 			//Если закомментить, то каждый незакрытый поток будет занимать память, файл останется заблоченным для других операций, возникнет исключение при попытке повторного доступа.
-			//stream.Dispose();
+			stream.Dispose();
 			UnityEditor.AssetDatabase.Refresh();
 			//В Unity можно искать объекты по их типу, для этого используется префикс "t:"
 			//После нахождения, Юнити возвращает массив гуидов (которые в мета-файлах задаются, например)
@@ -79,6 +79,7 @@ namespace DefaultNamespace
 				//Этой командой можно загрузить сам ассет
 				var asset = UnityEditor.AssetDatabase.LoadAssetAtPath<TextAsset>(path);
 				//todo comment: Для чего нужны эти проверки?
+				//Для защиты от исключений, если ассет не загрузится и для точного поиска конкретного файла по имени "Path"
 				if(asset != null && asset.name == "Path")
 				{
 					_json = asset;
@@ -86,6 +87,7 @@ namespace DefaultNamespace
 					UnityEditor.AssetDatabase.SaveAssets();
 					UnityEditor.AssetDatabase.Refresh();
 					//todo comment: Почему мы здесь выходим, а не продолжаем итерироваться?
+					//Мы ассет нашли, смысла продолжать поиск нет
 					return;
 				}
 			}
