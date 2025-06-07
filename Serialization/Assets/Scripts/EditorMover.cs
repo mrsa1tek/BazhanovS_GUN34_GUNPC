@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 
 namespace DefaultNamespace
 {
@@ -8,10 +9,13 @@ namespace DefaultNamespace
 	{
 		private PositionSaver _save;
 		private float _currentDelay;
-		
+
 		//todo comment: Что произойдёт, если _delay > _duration?
 		//Действие никогда не начнется, поскольку задержка превышает общее время работы
+		[Range(0.2f, 1.0f)]
 		private float _delay = 0.5f;
+		
+		[Min(0.2f)]
 		private float _duration = 5f;
 
 		private void Start()
@@ -20,6 +24,12 @@ namespace DefaultNamespace
 			// GetComponent дорогая опекрация, поэтому в Start() она выполнится один раз, а в Update каждый кадр, что будет нагружать CPU
 			_save = GetComponent<PositionSaver>();
 			_save.Records.Clear();
+
+			if (_duration <= _delay)
+			{
+				_duration = _delay * 5f;
+				Debug.LogWarning($"Duration was too small, Adjusted to {_duration}");
+			}
 		}
 
 		private void Update()
@@ -48,4 +58,6 @@ namespace DefaultNamespace
 			}
 		}
 	}
+
+
 }

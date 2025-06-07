@@ -7,15 +7,20 @@ namespace DefaultNamespace
 {
 	public class PositionSaver : MonoBehaviour
 	{
+		[System.Serializable]
 		public struct Data
 		{
 			public Vector3 Position;
 			public float Time;
 		}
 
-		private TextAsset _json;
+		[ReadOnly]
+		[Tooltip("Для заполнения используйте контекстное меню")]
+		public TextAsset _json;
 
-		public List<Data> Records { get; private set; }
+		[SerializeField, HideInInspector]
+		private List<Data> _records = new List<Data>();
+		public List<Data> Records => _records;
 
 		private void Awake()
 		{
@@ -31,8 +36,8 @@ namespace DefaultNamespace
 			JsonUtility.FromJsonOverwrite(_json.text, this);
 			//todo comment: Для чего нужна эта проверка (что она позволяет избежать)?
 			//искючает ситуации, когда код будет пытаться работать с неинициализированным списком
-			if (Records == null)
-				Records = new List<Data>(10);
+			if (_records == null)
+				_records = new List<Data>(10);
 		}
 
 		private void OnDrawGizmos()
@@ -95,8 +100,13 @@ namespace DefaultNamespace
 
 		private void OnDestroy()
 		{
-			//todo logic...
-		}
+			if (_json == null) return;
+
+            string jsonData = JsonUtility.ToJson(this, true);
+            string path = UnityEditor.AssetDatabase.GetAssetPath(_json);
+            System.IO.File.WriteAllText(path, jsonData);
+            UnityEditor.AssetDatabase.Refresh();
+        }
 #endif
 	}
 }
