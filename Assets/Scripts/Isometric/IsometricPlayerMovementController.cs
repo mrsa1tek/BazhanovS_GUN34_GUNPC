@@ -1,18 +1,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class PlayerMovementIsometric : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   
+    public float moveSpeed = 5f;
+    
+    public Rigidbody2D rb;
+    
+    Vector2 movement;
 
-    // Update is called once per frame
+
     void Update()
     {
+        movement.x = Input.GetAxis("Horizontal");
+        movement.y = Input.GetAxis("Vertical");
+        
+    }
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        rb.MovePosition(rb.position + movement * (moveSpeed * Time.fixedDeltaTime));
         
     }
 }
